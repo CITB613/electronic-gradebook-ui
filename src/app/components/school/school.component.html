@@ -114,6 +114,9 @@
                       <div class="btn"  *ngIf="submitDisplay">
                         <button type="submit" class="btn btn-primary" (click)="edit()" >Edit</button>
                       </div>
+                       <div class="btn"  *ngIf="submitDisplay">
+                        <button type="submit" class="btn btn-primary" (click)="add()" >Add</button>
+                      </div>
                       <div class="btn"  *ngIf="!submitDisplay">
                         <button type="submit" class="btn btn-success" (click)='save()'>Save</button>
                         <button type="button" class="btn btn-warning" (click)="discard()">Discard</button>

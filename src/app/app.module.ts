@@ -28,7 +28,7 @@ import { CoursesService } from './services/courses.service';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { StudentDetailComponent } from './components/student-detail/student-detail.component';
-// import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes= [
   {path:'login', 
@@ -107,6 +107,7 @@ const routes= [
     StudentDetailComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
@@ -114,7 +115,6 @@ const routes= [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    // HttpClientModule,
     SchoolService,
     DirectorService,
     UserService,
