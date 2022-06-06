@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TokenStorageService } from '../../services/token-storage.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,7 +10,8 @@ import { TokenStorageService } from '../../services/token-storage.service';
 export class LoginComponent implements OnInit {
   constructor(
     private http: HttpClient,
-    private tokenService: TokenStorageService
+    private tokenService: TokenStorageService,
+    private router: Router
   ) {}
 
   username = '';
@@ -25,6 +27,7 @@ export class LoginComponent implements OnInit {
         const token = resp.AccessToken;
         console.log(token);
         this.tokenService.saveToken(token);
+        this.router.navigateByUrl('/');
       });
   }
 }

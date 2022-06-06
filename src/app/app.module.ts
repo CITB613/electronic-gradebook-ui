@@ -25,77 +25,21 @@ import { DirectorService } from './services/director.service';
 import { UserService } from './services/user.service';
 import { CoursesService } from './services/courses.service';
 
-
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { StudentDetailComponent } from './components/student-detail/student-detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from './helpers/HttpRequestInterceptop';
 
-const routes= [
-  {path:'login', 
-  component: LoginComponent,
-  
-} ,
- {
-  path:'', component : ContentComponent,
-
-  children :[
-    {path  : '',
-    component : IndexComponent},
-    {
-      path:'school',
-      component: SchoolComponent
-    },
-    {
-      path:'director',
-      component: DirectorComponent
-    },
-    {
-      path:'courses',
-      component: CoursesComponent
-    },
-    {
-      path:'teachers',
-      component: TeachersComponent
-    },
-    {
-      path:'parents',
-      component: ParentsComponent
-    },
-    {
-      path:'students',
-      component: StudentsComponent
-    },
-    {
-      path:'users',
-      component: UsersComponent
-    },
-    {
-      path:'stastistic',
-      component: StastisticComponent
-    },
-    {
-      path:'student_detail',
-      component: StudentDetailComponent
-    }
-
-
-
-  ]
-
-}
-]
-
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    AdminComponent, 
+    AdminComponent,
     FooterComponent,
     NavComponent,
     ContentComponent,
     LoginComponent,
-    
+
     IndexComponent,
     SchoolComponent,
     DirectorComponent,
@@ -105,7 +49,7 @@ const routes= [
     ParentsComponent,
     UsersComponent,
     StastisticComponent,
-    StudentDetailComponent
+    StudentDetailComponent,
   ],
   imports: [
     HttpClientModule,
@@ -113,17 +57,14 @@ const routes= [
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule.forRoot(routes)
   ],
   providers: [
     SchoolService,
     DirectorService,
     UserService,
     CoursesService,
-    authInterceptorProviders
-
+    authInterceptorProviders,
   ],
   bootstrap: [AppComponent],
-  
 })
-export class AppModule { }
+export class AppModule {}
