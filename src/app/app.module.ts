@@ -29,6 +29,7 @@ import { CoursesService } from './services/courses.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { StudentDetailComponent } from './components/student-detail/student-detail.component';
 import { HttpClientModule } from '@angular/common/http';
+import { authInterceptorProviders } from './helpers/HttpRequestInterceptop';
 
 const routes= [
   {path:'login', 
@@ -118,7 +119,8 @@ const routes= [
     SchoolService,
     DirectorService,
     UserService,
-    CoursesService
+    CoursesService,
+    authInterceptorProviders
 
   ],
   bootstrap: [AppComponent],
