@@ -61,37 +61,20 @@
 
     
 
-    <div class="card">
+    <div  class="card">
         <div class="card-header text-white bg-primary">
           <h3>School Information</h3>
         </div>
         <div class="card-block">
           
-            <form   id="">  
-                    <!-- <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" formControlName="name" placeholder="Name">
-                    </div>
-                    </div>
-                    <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label for="address">Address</label>
-                        <input type="text" class="form-control" formControlName="address" placeholder="Address">
-                    </div>
-                    </div>
-                    <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label for="address">Phone Number</label>
-                        <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Phone Number">
-                    </div>
-                    </div> -->
+            <form [formGroup]="schoolForm"  id="">  
+                    
                     <div class="row g-3 align-items-center">
                         <div class="col-2">
-                          <label for="name" class="col-form-label">School Name</label>
+                          <label for="name" class="col-form-label">School Name </label>
                         </div>
                         <div class="col-5">
-                          <input type="string" id="name" class="form-control" value="{{school.name}}">
+                          <input type="string"   class="form-control" formControlName="schoolName" [disabled]="(submitDisplay)">
                         </div>
                       </div>
                     <div class="row g-3 align-items-center">
@@ -99,17 +82,18 @@
                           <label for="address" class="col-form-label">Address</label>
                         </div>
                         <div class="col-5">
-                          <input type="string" id="address" class="form-control" value="{{school.address}}">
+                          <input type="string"  class="form-control" formControlName="address" [disabled]="(submitDisplay)" >
                         </div>
+                        
                       </div>
-                    <div class="row g-3 align-items-center">
+                    <!-- <div class="row g-3 align-items-center">
                         <div class="col-2">
                           <label for="phone" class="col-form-label">Phone Number</label>
                         </div>
                         <div class="col-5">
                           <input type="number" id="phone" class="form-control" value="{{school.phoneNumber}}">
                         </div>
-                      </div>
+                      </div> -->
 
                       <div class="btn"  *ngIf="submitDisplay">
                         <button type="submit" class="btn btn-primary" (click)="edit()" >Edit</button>

@@ -5,7 +5,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { AdminComponent } from './components/admin/admin.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ContentComponent } from './components/content/content.component';
@@ -28,68 +27,21 @@ import { CoursesService } from './services/courses.service';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { StudentDetailComponent } from './components/student-detail/student-detail.component';
-// import { HttpClientModule } from '@angular/common/http';
+ import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ClassComponent } from './components/class/class.component';
+import { ClassInforComponent } from './components/class-infor/class-infor.component';
+import { routes } from './app.route';
+import { ClassService } from './services/class.service';
+import { TeacherService } from './services/teacher.service';
+import { ParentService } from './services/parent.service';
+import { SchoolListComponent } from './components/school-list/school-list.component';
 
-const routes= [
-  {path:'login', 
-  component: LoginComponent,
-  
-} ,
- {
-  path:'', component : ContentComponent,
-
-  children :[
-    {path  : '',
-    component : IndexComponent},
-    {
-      path:'school',
-      component: SchoolComponent
-    },
-    {
-      path:'director',
-      component: DirectorComponent
-    },
-    {
-      path:'courses',
-      component: CoursesComponent
-    },
-    {
-      path:'teachers',
-      component: TeachersComponent
-    },
-    {
-      path:'parents',
-      component: ParentsComponent
-    },
-    {
-      path:'students',
-      component: StudentsComponent
-    },
-    {
-      path:'users',
-      component: UsersComponent
-    },
-    {
-      path:'stastistic',
-      component: StastisticComponent
-    },
-    {
-      path:'student_detail',
-      component: StudentDetailComponent
-    }
-
-
-
-  ]
-
-}
-]
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    AdminComponent, 
+     
     FooterComponent,
     NavComponent,
     ContentComponent,
@@ -104,21 +56,28 @@ const routes= [
     ParentsComponent,
     UsersComponent,
     StastisticComponent,
-    StudentDetailComponent
+    StudentDetailComponent,
+    ClassComponent,
+    ClassInforComponent,
+    SchoolListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
-    // HttpClientModule,
+    
     SchoolService,
     DirectorService,
     UserService,
-    CoursesService
+    CoursesService,
+    ClassService,
+    TeacherService,
+    ParentService
 
   ],
   bootstrap: [AppComponent],

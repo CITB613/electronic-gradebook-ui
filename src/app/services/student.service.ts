@@ -7,8 +7,8 @@ import { User } from '../models/user.model';
 })
 export class StudentService {
 
-  student1 : Student = new Student(new User('41',1, 'stu', '22-02-02', 'username', 'pass','', 0)) ;
-  student2 : Student = new Student(new User('42',1, 'stu', '22-02-02', 'username', 'pass','', 0)) ;
+  student1 : Student = new Student('st1', 'name 1', 'id_class1') ;
+  student2 : Student = new Student('42', 'name 2', 'id_2', ) ;
 
   students:Array<Student> = [this.student1, this.student2]
 

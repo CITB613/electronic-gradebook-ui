@@ -14,6 +14,7 @@ export class UserEditService {
   }
 
   getUserToEdit(users :any[] ) {
+    this.usersToEdit= [] ;
     users.forEach( (value) => { this.usersToEdit.push({user :value, edit: false}  ) } )
     return this.usersToEdit ;
   }

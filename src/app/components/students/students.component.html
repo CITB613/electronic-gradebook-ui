@@ -1,6 +1,6 @@
 <div class="container-fluid" ng-controller="AppCtrl">
     
-    <div class="alert alert-info loading text-center " ng-show="users.length==0">Student Lists</div>
+    <div class="alert alert-info loading text-center " ng-show="users.length==0">Student List</div>
     <div class="panel panel-info">
       <div class="panel-heading">
         
@@ -27,7 +27,7 @@
               <th class="col-2 ">Name<span class="pull-right arrow-up" ></span>
                 <span class="pull-right arrow-down" ></span>
               </th>
-              <th  class="col-1">Birth Day<span class="pull-right arrow-up" ></span>
+              <th  class="col-1">Class<span class="pull-right arrow-up" ></span>
                 <span class="pull-right arrow-down" ></span>
               </th>
               <th  class="col-2">Courses<span class="pull-right arrow-up" ></span>
@@ -43,24 +43,27 @@
             
             <tr *ngFor=" let item of list, index as index" class="mb-sm-10">
               <td (click)="editDisplay(index)" class="p-0" >
-                <span >{{item.user.user._id}}</span>
+                <span >{{item.id}}</span>
                 <!-- <input type="text" name="id" *ngIf="item.edit" class="form-control p-0" [(ngModel)]="user._id" placeholder="item.user.user._id" [value]=(item.user.user._id) required="" /> -->
               </td>
               <td (click)="editDisplay(index)">
-                <span *ngIf="!item.edit">{{item.user.user._name}}</span>
-                <input type="text" *ngIf="item.edit" class="col-0" name="name" class="form-control" [(ngModel)]="item.user.user._name" [value]="(item.user.user._name)" placeholder="Name" required="" />
+                <span *ngIf="!item.edit">{{item.name}}</span>
+                <input type="text" *ngIf="item.edit" class="col-0" name="name" class="form-control" [(ngModel)]="item.name" [value]="(item.name)" placeholder="Name" required="" />
+                
+                 
+              </td>
+              <td (click)="editDisplay(index)">
+                <span *ngIf="!item.edit">{{item.id_class}}</span>
+                <input type="text" *ngIf="item.edit" class="col-0" name="name" class="form-control" [(ngModel)]="item.id_class" [value]="(item.id_class)" placeholder="Name" required="" />
                 
                  
               </td>
               
-              <td (click)="editDisplay(index)">
-                <span *ngIf="!item.edit">{{item.user.user._dateOfBirth}}</span>
-                <input type="text" *ngIf="item.edit" name="dateOfBirth" class="form-control" [(ngModel)]="item.user.user._dateOfBirth" [value]="(item.user.user._dateOfBirth)" placeholder="Birth Day" required="" />
-              </td>
+              
     
               
               <td >
-                <button type="button" class="btn btn-primary p-0"  >View All</button>
+                <button type="button" class="btn btn-primary p-0"  >View </button>
               </td>
               <td>
                 <button type="button" class="btn btn-primary p-0" *ngIf="!item.edit" (click)="editUser(index)">Edit</button>

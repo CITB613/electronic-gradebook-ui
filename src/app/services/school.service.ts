@@ -10,6 +10,11 @@ export class SchoolService {
 
   public API :  string = '' ;
 
+  school1 : School = new School('123', 'School', 'Address');
+  school2: School = new School('112', 'sc2', 'add')
+
+  schools :Array<School>=[this.school1, this.school2]
+
   constructor(
     
   ) { }
@@ -20,6 +25,11 @@ export class SchoolService {
   // }
   public getSchoolInfor( ) 
   {
-    return new School('123', 'School', 'Address', 123) ;
+    return new School('123', 'School', 'Address') ;
+  }
+
+  getSchoolList()
+  {
+    return this.schools;
   }
 }

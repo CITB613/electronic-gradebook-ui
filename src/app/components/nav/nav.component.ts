@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -6,34 +7,47 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+   school_id : string= '12';
 
    public adminLinks : any[] =[
     {'title': 'Manage School',
-      'link':'#'
-    } ,
-    {'title':'Manage Director',
-      'link' : '#'},
+      'link': 'school'},
 
+    {'title':'Manage Director',
+      'link' : 'director'},
+    {
+      'title':'Manage Classes',
+      'link' : 'classes'
+    },
     {'title':'Manage Courses' ,
-      'link': '#'},
+      'link': 'courses'},
     {'title':'Manage Teachers' ,
-      'link': '#'},
+      'link': 'teachers'},
     {'title':'Manage Students' ,
-      'link': '#'},
+      'link': 'students'},
     {'title':'Manage Parents' ,
-      'link': '#'},
+      'link': 'parents'},
     {'title':'Manage Users' ,
-      'link': '#'},
+      'link': 'users'},
     {'title':'Stastistics' ,
-      'link': '#'}
+      'link': 'stastistics'}
     
   ]
 
-  constructor() { }
+  constructor(private activateRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this.adminLinks[0]);
+
+    console.log(this.activateRoute.snapshot.params['id']);
     
+    this.school_id=this.activateRoute.snapshot.params['id']
+    console.log(this.school_id);
+    
+    console.log('schools/'+ this.school_id + '/school');
+    
+    console.log(this.adminLinks[0]['link']);
+    
+
   }
 
 }

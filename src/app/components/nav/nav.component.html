@@ -7,7 +7,11 @@
                 </a> -->
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item" *ngFor="let item of adminLinks">
-                        <a href="{{item['link']}}" class="nav-link align-middle px-0">
+                        <!-- <a href="{{item['link']}}" class="nav-link align-middle px-0">
+                            
+                            <span class="ms-1 d-none d-sm-inline">{{item['title']}}</span>
+                        </a> -->
+                        <a [routerLink]="['/schools',school_id ,item['link'] ]" routerLinkActive="router-link-active"  class="nav-link align-middle px-0">
                             <!-- <i class="fs-4 bi-house"></i>  -->
                             <span class="ms-1 d-none d-sm-inline">{{item['title']}}</span>
                         </a>
@@ -83,7 +87,7 @@
         </div>
         <div class="content col py-3">
             
-            <router-outlet></router-outlet>
+            <router-outlet ></router-outlet>
         </div>
     </div>
 </div>

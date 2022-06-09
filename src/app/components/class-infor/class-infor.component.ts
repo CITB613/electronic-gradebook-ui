@@ -1,28 +1,35 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ItemEditorService } from 'src/app/services/item-editor.service';
 import { StudentService } from 'src/app/services/student.service';
-import { UserEditService } from 'src/app/services/user-edit.service';
 
 @Component({
-  selector: 'app-students',
-  templateUrl: './students.component.html',
-  styleUrls: ['./students.component.css']
+  selector: 'app-class-infor',
+  templateUrl: './class-infor.component.html',
+  styleUrls: ['./class-infor.component.css']
 })
-export class StudentsComponent implements OnInit {
+export class ClassInforComponent implements OnInit {
 
   public msg : string ='';
   public list: Array<any> =  [];
   public search : string =' ';
 
-  constructor(private studentService: StudentService,private studentEditor : UserEditService) { }
+  public classForm = new FormGroup (
+    { name: new FormControl(''),
+      
+      
+      
+    }
+  )
+  constructor(private studentService : StudentService, private ItemEditor : ItemEditorService, private activateRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
-
-    this.list = this.studentService.getAllStudents();
-
-    
+    this.list = this.studentService.getAllStudents() ;
     console.log(this.list);
+    console.log(this.activateRoute.snapshot.params['id']);
     
-
+    
   }
 
   editDisplay(index : number)
@@ -61,7 +68,16 @@ export class StudentsComponent implements OnInit {
   } ;
 
   
-  
+  clear(){
+    this.classForm.reset()
+  };
+
+  addUser() {
+      
+    console.log(this.classForm.value);
+    
+
+  } ;
 
   
 

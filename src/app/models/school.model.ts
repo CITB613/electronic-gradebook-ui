@@ -3,10 +3,15 @@ export class School
     private _id : string ;
     private _name : string;
     private _address: string ;
-    private _phoneNumber : number;
-     constructor(id : string, name : string, address : string, phoneNumber : number)
+    
+     constructor(id : string, name : string, address : string)
      {
-         this._id=id, this._name=name, this._address= address, this._phoneNumber=phoneNumber
+         this._id=id, this._name=name, this._address= address
+        
+         
+            
+         
+         
 
      }
        
@@ -31,13 +36,7 @@ export class School
      public set address(address : string)  {
           this._address = address
      }
-     public get phoneNumber() : number {
-         return this._phoneNumber
-     }
      
-     public set phoneNumber(phoneNumber : number)  {
-          this._phoneNumber = phoneNumber
-     }
 
      
 

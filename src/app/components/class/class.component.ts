@@ -1,44 +1,57 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { CoursesService } from 'src/app/services/courses.service';
+import { ActivatedRoute } from '@angular/router';
+import { ClassService } from 'src/app/services/class.service';
 import { UserEditService } from 'src/app/services/user-edit.service';
 
 @Component({
-  selector: 'app-courses',
-  templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.css']
+  selector: 'app-class',
+  templateUrl: './class.component.html',
+  styleUrls: ['./class.component.css']
 })
-export class CoursesComponent implements OnInit {
+export class ClassComponent implements OnInit {
+
+   
 
   public msg : string ='';
   public list: Array<any> =  [];
   public search : string =' ';
   
-  public form = new FormGroup (
+  public id_school: string = '' ;
+  
+  
+
+
+  public classForm = new FormGroup (
     { name: new FormControl(''),
-      semester : new FormControl(''),
-      id_teacher : new FormControl(''),
+      id_form_teacher : new FormControl(''),
       
       
     }
   )
-  constructor(courseService : CoursesService, itemEditor : UserEditService ) {
-    let items = courseService.getAllCourses();
-    this.list= itemEditor.getUserToEdit(items);
-
-    console.log(this.list[1].user.id_teachers);
-    
+  constructor(private classService: ClassService, itemEditor : UserEditService, private activateRoute : ActivatedRoute ) {
 
    }
 
   ngOnInit(): void {
-  }
+    this.list= this.classService.getAllClass();
+    console.log(this.list);
 
-
-  ngOnDestroy()
-  {
+    this.id_school=this.activateRoute.snapshot.params['id'];
+    console.log(this.activateRoute.snapshot.paramMap.get('id'));
     
+    this.id_school= this.activateRoute.parent?.snapshot.params['id'];
+
+    console.log(     this.activateRoute.parent?.snapshot.params['id']
+    );
+    
+   
+  
+
+    
+
   }
+
   editDisplay(index : number)
   { 
     
@@ -76,12 +89,12 @@ export class CoursesComponent implements OnInit {
 
   
   clear(){
-    this.form.reset()
+    this.classForm.reset()
   };
 
   addUser() {
       
-    console.log(this.form.value);
+    console.log(this.classForm.value);
     
 
   } ;
@@ -93,5 +106,4 @@ export class CoursesComponent implements OnInit {
     console.log(this.search);
     
   }
-
 }

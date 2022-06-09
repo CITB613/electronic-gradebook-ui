@@ -1,12 +1,18 @@
 import { User } from "./user.model";
 
 export class Student{
-    user: User = new User('stu', 1, 'stu', '00-12-12', 'user','pass', '', 0 );
+    id: string ='  ';
+    name : string= ' ';
+    id_class : string = ' ';
+
+
     
-    constructor(user : User)
+    constructor(id : string, name : string, id_class : string)
     {
         
-        this.user= user
+        this.id= id;
+        this.name=name;
+        this.id_class = id_class
     }
 
 }
