@@ -1,20 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+  constructor(private tokenService: TokenStorageService) {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  onClickMe()
-  {
-    console.log("hi");
-    
+  onLogout() {
+    this.tokenService.signOut();
   }
 }

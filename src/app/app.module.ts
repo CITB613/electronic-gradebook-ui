@@ -24,9 +24,9 @@ import { DirectorService } from './services/director.service';
 import { UserService } from './services/user.service';
 import { CoursesService } from './services/courses.service';
 
-
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { StudentDetailComponent } from './components/student-detail/student-detail.component';
+<<<<<<< HEAD
  import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ClassComponent } from './components/class/class.component';
 import { ClassInforComponent } from './components/class-infor/class-infor.component';
@@ -36,17 +36,25 @@ import { TeacherService } from './services/teacher.service';
 import { ParentService } from './services/parent.service';
 import { SchoolListComponent } from './components/school-list/school-list.component';
 
+=======
+import { HttpClientModule } from '@angular/common/http';
+import { authInterceptorProviders } from './helpers/HttpRequestInterceptop';
+>>>>>>> 36445d61456e997a70309072fc84f8c2ce08dda3
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+<<<<<<< HEAD
      
+=======
+    AdminComponent,
+>>>>>>> 36445d61456e997a70309072fc84f8c2ce08dda3
     FooterComponent,
     NavComponent,
     ContentComponent,
     LoginComponent,
-    
+
     IndexComponent,
     SchoolComponent,
     DirectorComponent,
@@ -57,30 +65,42 @@ import { SchoolListComponent } from './components/school-list/school-list.compon
     UsersComponent,
     StastisticComponent,
     StudentDetailComponent,
+<<<<<<< HEAD
     ClassComponent,
     ClassInforComponent,
     SchoolListComponent
+=======
+>>>>>>> 36445d61456e997a70309072fc84f8c2ce08dda3
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+<<<<<<< HEAD
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
     
+=======
+  ],
+  providers: [
+>>>>>>> 36445d61456e997a70309072fc84f8c2ce08dda3
     SchoolService,
     DirectorService,
     UserService,
     CoursesService,
+<<<<<<< HEAD
     ClassService,
     TeacherService,
     ParentService
 
+=======
+    authInterceptorProviders,
+>>>>>>> 36445d61456e997a70309072fc84f8c2ce08dda3
   ],
   bootstrap: [AppComponent],
-  
 })
-export class AppModule { }
+export class AppModule {}
