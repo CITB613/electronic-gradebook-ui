@@ -1,5 +1,4 @@
-
-import { User } from "./user.model";
+// import { User } from './user.model';
 export class Director {
 
     id : string = '' ;
@@ -10,8 +9,15 @@ export class Director {
     {
         this.id =id;
         this.name =name;
-        this.phone = phone; 
+        this.phone = phone;
         this.email= email;
     }
 
 }
+
+export type DirectorType = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  birthDate: string;
+};

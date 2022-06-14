@@ -1,113 +1,52 @@
-<!-- <div class="products" >
-    <form [formGroup]="formItem"  id="">  //(ngSubmit)="submit()"
-      <div class="form-row">
-        <div class="form-group col-md-3">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" formControlName="name" placeholder="Name">
+<div class="card">
+  <div class="card-header text-white bg-primary">
+    <h3>School Information</h3>
+  </div>
+  <div class="card-block">
+    <form [formGroup]="schoolForm" id="">
+      <div class="row g-3 align-items-center">
+        <div class="col-2">
+          <label for="name" class="col-form-label">School Name </label>
         </div>
-        <div class="form-group col-md-3">
-          <label for="type">Address</label>
-          <select class="form-control" formControlName="type">
-            <option value="addidas">addidas</option>
-            <option value='nike'>nike</option>
-            <option value="sketcher">sketcher</option>
+        <div class="col-5">
+          <input type="string" class="form-control" formControlName="name" />
+        </div>
+      </div>
+      <div class="row g-3 align-items-center">
+        <div class="col-2">
+          <label for="address" class="col-form-label">Address</label>
+        </div>
+        <div class="col-5">
+          <input type="string" class="form-control" formControlName="address" />
+        </div>
+      </div>
+
+      <div class="row g-3 align-items-center">
+        <div class="col-2">
+          <label for="principal" class="col-form-label">Principal</label>
+        </div>
+        <div class="col-5">
+          <select formControlName="principal">
+            <option *ngFor="let principal of principals" [ngValue]="principal">
+              {{ principal.firstName + " " + principal.lastName }}
+            </option>
           </select>
-          
-        </div>
-        <div class="form-group col-md-3">
-          <label for="gender">Gender</label>
-          <select class="form-control" formControlName="gender">
-            <option value="man">man</option>
-            <option value='woman'>woman</option>
-            <option value="kid">kid</option>
-          </select>
-          
-        </div>  
-        <div class="form-group col-md-3">
-          <label for="inputPassword4">Price</label>
-          <input type="number" class="form-control" formControlName="price" placeholder="Price">
-        </div>
-      
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-3">
-          <label for="">Link1</label>
-          <input type="text" class="form-control" formControlName="link1" placeholder="Link1">
-        </div>
-        <div class="form-group col-md-3">
-          <label for="">Link2</label>
-          <input type="text" class="form-control" formControlName="link2" placeholder="Link2">
-        </div>
-        <div class="form-group col-md-3">
-          <label for="">Link3</label>
-          <input type="text" class="form-control" formControlName="link3" placeholder="Link3">
-        </div>
-        <div class="form-group col-md-3">
-          <label for="">Link4</label>
-          <input type="text" class="form-control" formControlName="link4" placeholder="Link4">
-        </div>
-      
-      </div>
-      <div class="btn"  *ngIf="submitDisplay">
-        <button type="submit" class="btn btn-primary" >Add</button>
-      </div>
-      <div class="btn"  *ngIf="!submitDisplay">
-        <button type="submit" class="btn btn-success" (click)='save()'>Save</button>
-        <button type="button" class="btn btn-warning" (click)="discard()">Discard</button>
-      </div>
-
-
-    </form> -->
-
-    
-
-    <div  class="card">
-        <div class="card-header text-white bg-primary">
-          <h3>School Information</h3>
-        </div>
-        <div class="card-block">
-          
-            <form [formGroup]="schoolForm"  id="">  
-                    
-                    <div class="row g-3 align-items-center">
-                        <div class="col-2">
-                          <label for="name" class="col-form-label">School Name </label>
-                        </div>
-                        <div class="col-5">
-                          <input type="string"   class="form-control" formControlName="schoolName" [disabled]="(submitDisplay)">
-                        </div>
-                      </div>
-                    <div class="row g-3 align-items-center">
-                        <div class="col-2">
-                          <label for="address" class="col-form-label">Address</label>
-                        </div>
-                        <div class="col-5">
-                          <input type="string"  class="form-control" formControlName="address" [disabled]="(submitDisplay)" >
-                        </div>
-                        
-                      </div>
-                    <!-- <div class="row g-3 align-items-center">
-                        <div class="col-2">
-                          <label for="phone" class="col-form-label">Phone Number</label>
-                        </div>
-                        <div class="col-5">
-                          <input type="number" id="phone" class="form-control" value="{{school.phoneNumber}}">
-                        </div>
-                      </div> -->
-
-                      <div class="btn"  *ngIf="submitDisplay">
-                        <button type="submit" class="btn btn-primary" (click)="edit()" >Edit</button>
-                      </div>
-                       <div class="btn"  *ngIf="submitDisplay">
-                        <button type="submit" class="btn btn-primary" (click)="add()" >Add</button>
-                      </div>
-                      <div class="btn"  *ngIf="!submitDisplay">
-                        <button type="submit" class="btn btn-success" (click)='save()'>Save</button>
-                        <button type="button" class="btn btn-warning" (click)="discard()">Discard</button>
-                      </div>
-                </form>
-
-
         </div>
       </div>
-      
+
+      <div class="btn">
+        <button type="submit" class="btn btn-success" (click)="submit()">
+          Save
+        </button>
+        <button type="button" class="btn btn-warning" (click)="discard()">
+          Discard
+        </button>
+      </div>
+    </form>
+  </div>
+  <ul class="list-group w-50 mx-auto" *ngFor="let item of list">
+    <li class="list-group-item" (click)="editSchool(item)">
+      {{ item.name }}
+    </li>
+  </ul>
+</div>

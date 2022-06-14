@@ -16,7 +16,7 @@ export class SchoolListComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.list = this.schoolService.getSchoolList();
+    // this.list = this.schoolService.getSchoolList();
 
     this.activateRoute.snapshot.params['id']
   }
