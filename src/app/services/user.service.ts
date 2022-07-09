@@ -1,34 +1,33 @@
 import { Injectable } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { User } from '../models/user.model';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { User, UserType } from '../models/user.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
+  constructor(private http: HttpClient) {}
 
-   user1= new User('1', 2, ' name', '21-01-01', 'userName', 'Password', 'email', 123);  
-   user2= new User('2', 2, ' name', '21-01-01', 'userName', 'Password', 'email', 123);  
-   users : Array<User> = [this.user1, this.user2] ;
-  constructor() { }
-
-  public getUsers() :User[]{
-    console.log(this.users);
-    
-    return this.users ;
+  public getUsers() {
+    return this.http.get<Array<UserType>>('http://localhost:8080/users');
   }
 
-  deleteUSer(id:string ) 
-  {
-    
+  deleteUser(id: number) {
+    return this.http.delete<any>(`http://localhost:8080/users/${id}`);
   }
 
-  getUserById(id: string)
-  {
+  getUserById(id: string) {
     return id;
   }
-  getNameById(id:string)
-  {
+  getNameById(id: string) {
     return id;
+  }
+
+  addUser(data: any) {
+    return this.http.post<any>('http://localhost:8080/api/register', data);
+  }
+
+  updateUser(data: any, id:number) {
+    return this.http.put<any>(`http://localhost:8080/users/${id}`, data);
   }
 }

@@ -59,6 +59,7 @@ export class SchoolComponent implements OnInit {
     } else {
       this.schoolService.editSchool(this.schoolForm.value);
     }
+    location.reload();
   }
 
   discard() {

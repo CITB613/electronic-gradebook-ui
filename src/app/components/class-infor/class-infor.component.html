@@ -39,7 +39,8 @@
               <th  class="col-1 " >ID<span class="pull-right arrow-up" ></span>
                 <span class="pull-right arrow-down" ></span>
               </th>
-              <th  class="col-1 w-0">Student Name<span class="pull-right arrow-up" ></span>
+              
+              <th  class="col-1 w-0">Name<span class="pull-right arrow-up" ></span>
                 <span class="pull-right arrow-down" ></span>
               </th>
               
@@ -60,7 +61,7 @@
             
                     
                         <td class="h-100"></td>
-                        <td><input  class="col-2  w-100 form-control" formControlName="name" type="text"></td>
+                        <td><input  class="col-2  w-100 form-control" formControlName="studentId" type="text"></td>
                         
                         
                         <!-- <td><select class="form-control p-0" formControlName="id_form_teacher">
@@ -87,7 +88,7 @@
                 <!-- <input type="text" name="id" *ngIf="item.edit" class="form-control p-0" [(ngModel)]="user._id" placeholder="item.user._id" [value]=(item.user._id) required="" /> -->
               </td>
               <td (click)="editDisplay(index)">
-                <span *ngIf="!item.edit">{{item.name}}</span>
+                <span *ngIf="!item.edit">{{item.firstName}} {{item.lastName}}</span>
                 <input type="text" *ngIf="item.edit" class="col-0" name="role" class="form-control" [(ngModel)]="item.name" [value]="(item.name)" placeholder="Name" required="" />
                 
                  <!-- <select class=" p-0" *ngIf="item.edit">
@@ -107,7 +108,7 @@
               
               <td>
                 <button type="button" class="btn btn-primary p-0" *ngIf="!item.edit" (click)="editUser(index)">Edit</button>
-                <button type="button" class="btn btn-danger p-0" *ngIf="!item.edit" (click)="deleteUser(item.user.id,index)">Delete</button>
+                <button type="button" class="btn btn-danger p-0" *ngIf="!item.edit" (click)="unenrollStudent(item.id,index)">Delete</button>
                 <button type="button" class="btn btn-success p-0" *ngIf="item.edit" (click)="updateUser(item.user.id, index)">Update</button>
                 <button type="button" class="btn btn-warning p-0" *ngIf="item.edit" (click)="cancelUser(index)">Cancel</button>
 

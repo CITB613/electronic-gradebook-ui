@@ -37,6 +37,7 @@ import { SchoolListComponent } from './components/school-list/school-list.compon
 
 import { HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from './helpers/HttpRequestInterceptop';
+import { CourseListComponent } from './components/course-list/course-list.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { authInterceptorProviders } from './helpers/HttpRequestInterceptop';
     ClassComponent,
     ClassInforComponent,
     SchoolListComponent,
+    CourseListComponent,
   ],
   imports: [
     HttpClientModule,

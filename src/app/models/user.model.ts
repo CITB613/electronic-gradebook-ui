@@ -20,3 +20,10 @@ export class User
         this._phoneNumber=phoneNumber
     }
 }
+
+export type UserType = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  birthDate: string;
+};

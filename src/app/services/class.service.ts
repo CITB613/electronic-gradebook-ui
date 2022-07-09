@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Class } from '../models/class.model';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ClassService {
+  classList: Array<any> = [];
 
-  class1 : Class = new Class('01', 'class_name', 'id_Teacher')
-  class2: Class = new Class('02', 'class_name', 'id_Tea');
+  constructor(private http: HttpClient) {}
 
-  classList : Array<Class> = [this.class1, this.class2]
+  getAllClass() {
+    return this.http.get<any>('http://localhost:8080/classes');
+  }
 
-  constructor() { }
+  addClass(data: any) {
+     return this.http.post<any>('http://localhost:8080/classes', data);
+  }
 
-  getAllClass()
-  {
-    return this.classList; 
+  deleteClass(id: number) {
+     return this.http.delete<any>(`http://localhost:8080/classes/${id}`);
   }
 }

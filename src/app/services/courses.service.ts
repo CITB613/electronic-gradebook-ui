@@ -1,20 +1,36 @@
 import { Injectable } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { Course } from '../models/course.model';
-
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CoursesService {
-  course1 : Course = new Course('32','CourseName', 'Semester', ['01','02'], 0)
-  course2 : Course = new Course('33','CourseName', 'Semester', ['04', '03'], 0)
+  courses: Array<Course> = [];
+  constructor(private http: HttpClient) {}
 
-  courses: Array<Course>= [this.course1, this.course2];
-  constructor() { }
+  getAllCourses() {
+    return this.http.get<any>(`http://localhost:8080/subjects`);
+  }
 
-  getAllCourses()
-  {
-    return this.courses;
+  getAllCoursesByClassId(classId: number) {
+    return this.http.get<any>(
+      `http://localhost:8080/classes/${classId}/subjects`
+    );
+  }
+
+  addSubject(subjectId: number, classId: number) {
+    return this.http.get<any>(
+      `http://localhost:8080/classes/${classId}/subjects/${subjectId}`
+    );
+  }
+  createSubject(data: any) {
+    return this.http.post<any>('http://localhost:8080/subjects', data);
+  }
+
+  deleteSubject(id: number) {
+     return this.http.delete<any>(
+       `http://localhost:8080/subjects/${id}`
+     );
   }
 }
