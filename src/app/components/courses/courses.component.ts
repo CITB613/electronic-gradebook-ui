@@ -16,7 +16,7 @@ export class CoursesComponent implements OnInit {
   public form = new FormGroup({
     name: new FormControl(''),
     semester: new FormControl(''),
-    id_teacher: new FormControl(''),
+    teacherId: new FormControl(''),
   });
   constructor(
     private courseService: CoursesService,
@@ -42,9 +42,9 @@ export class CoursesComponent implements OnInit {
   }
 
   deleteSubject(id: number, index: number) {
-   this.courseService.deleteSubject(id).subscribe((data) => {
-     location.reload();
-   });
+    this.courseService.deleteSubject(id).subscribe((data) => {
+      location.reload();
+    });
   }
 
   updateUser(id: string, index: number) {
@@ -53,8 +53,6 @@ export class CoursesComponent implements OnInit {
     console.log(id);
 
     console.log(this.list[index].user);
-
-    // this.list[index].user = item.user;
   }
   cancelUser(index: number) {
     this.list[index].edit = false;

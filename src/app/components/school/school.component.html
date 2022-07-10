@@ -46,7 +46,10 @@
   </div>
   <ul class="list-group w-50 mx-auto" *ngFor="let item of list">
     <li class="list-group-item" (click)="editSchool(item)">
-      {{ item.name }}
+      {{ item.name }} 
+    </li>
+    <li class="list-group-item" (click)="editSchool(item)">
+      {{ item.address }} 
     </li>
   </ul>
 </div>

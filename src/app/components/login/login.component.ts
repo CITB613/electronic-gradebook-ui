@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         const token = resp.AccessToken;
         console.log(token);
         this.tokenService.saveToken(token);
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/schools/1/users');
       });
   }
 }

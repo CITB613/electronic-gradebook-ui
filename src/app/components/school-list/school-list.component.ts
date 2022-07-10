@@ -5,25 +5,25 @@ import { SchoolService } from 'src/app/services/school.service';
 @Component({
   selector: 'app-school-list',
   templateUrl: './school-list.component.html',
-  styleUrls: ['./school-list.component.css']
+  styleUrls: ['./school-list.component.css'],
 })
 export class SchoolListComponent implements OnInit {
+  public list: Array<any> = [];
 
-  public list: Array<any> =  [];
-
-  constructor(private schoolService : SchoolService,
-              private activateRoute : ActivatedRoute
-    ) { }
+  constructor(
+    private schoolService: SchoolService,
+    private activateRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    // this.list = this.schoolService.getSchoolList();
+    this.schoolService.getSchoolList().subscribe((data) => {
+      this.list = data;
+      console.log(this.list);
+    });
 
-    this.activateRoute.snapshot.params['id']
+    this.activateRoute.snapshot.params['id'];
   }
-  onClick(id : string)
-  {
+  onClick(id: string) {
     console.log(id);
-    
   }
-
 }

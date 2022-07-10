@@ -27,24 +27,17 @@ export class CourseListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-     this.classId = this.activateRoute.snapshot.params['id'];
+    this.classId = this.activateRoute.snapshot.params['id_class'];
 
-     this.courseService
-       .getAllCoursesByClassId(this.classId)
-       .subscribe((data) => {
-         this.list = data;
-       });
-
-    // this.list = this.itemEditor.getItemsToEdit(list);
-
-    console.log(this.list);
+    this.courseService
+      .getAllCoursesByClassId(this.classId)
+      .subscribe((data) => {
+        this.list = data;
+      });
 
     this.id_school = this.activateRoute.parent?.snapshot.params['id'];
 
-    console.log(this.id_school);
-
     this.id_class = this.activateRoute.parent?.snapshot.params['id_class'];
-    console.log(this.id_class);
   }
 
   editDisplay(index: number) {
@@ -63,12 +56,6 @@ export class CourseListComponent implements OnInit {
 
   updateUser(id: string, index: number) {
     this.list[index].edit = false;
-
-    console.log(id);
-
-    console.log(this.list[index].user);
-
-    // this.list[index].user = item.user;
   }
   cancelUser(index: number) {
     this.list[index].edit = false;
@@ -79,9 +66,8 @@ export class CourseListComponent implements OnInit {
   }
 
   addSubject() {
-    console.log(this.form.value);
     this.courseService
-      .addSubject(this.form.value.subjectId, this.classId)
+      .addSubject(this.form.value.id_course, this.classId)
       .subscribe((data) => {
         location.reload();
       });

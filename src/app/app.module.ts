@@ -38,6 +38,7 @@ import { SchoolListComponent } from './components/school-list/school-list.compon
 import { HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from './helpers/HttpRequestInterceptop';
 import { CourseListComponent } from './components/course-list/course-list.component';
+import { AuthenticationGuard } from './helpers/AuthenticationGuard';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { CourseListComponent } from './components/course-list/course-list.compon
     ClassService,
     TeacherService,
     ParentService,
+    AuthenticationGuard,
     authInterceptorProviders,
   ],
   bootstrap: [AppComponent],

@@ -24,9 +24,15 @@ import { ClassInforComponent } from './components/class-infor/class-infor.compon
 import { Routes } from '@angular/router';
 import { SchoolListComponent } from './components/school-list/school-list.component';
 import { CourseListComponent } from './components/course-list/course-list.component';
+import { AuthenticationGuard } from './helpers/AuthenticationGuard';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  {
+    path: '',
+    component: LoginComponent ,
+    canActivate: [AuthenticationGuard]
+  },
   {
     path: 'schools',
     component: SchoolListComponent,

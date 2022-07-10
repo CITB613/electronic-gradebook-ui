@@ -13,126 +13,150 @@
     </div>
     <div class="panel-body">
       <div class="row col-sm-12">
-        <div class="">
-   
+        <div class=""></div>
+        <table
+          class="table table-striped table-bordered"
+          *ngIf="list.length != 0"
+        >
+          <thead>
+            <tr>
+              <th class="col-1">
+                ID<span class="pull-right arrow-up"></span>
+                <span class="pull-right arrow-down"></span>
+              </th>
+              <th class="col-1 w-0">
+                Name<span class="pull-right arrow-up"></span>
+                <span class="pull-right arrow-down"></span>
+              </th>
+
+              <th class="col-1 w-0">
+                Teacher ID<span class="pull-right arrow-up"></span>
+                <span class="pull-right arrow-down"></span>
+              </th>
+
+              <th class="col-2.5">Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr [formGroup]="form">
+          <td class="h-100"></td>
+
+              <td>
+                <input
+                  class="col-2 w-100 form-control"
+                  formControlName="name"
+                  type="text"
+                />
+              </td>
+                  
+              <td>
+                <input
+                  class="col-2 w-100 form-control"
+                  formControlName="teacherId"
+                  type="text"
+                />
+              </td>
+
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-success p-0"
+                  (click)="createSubject()"
+                >
+                  Add
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-warning p-0"
+                  (click)="clear()"
+                >
+                  Clear
+                </button>
+              </td>
+            </tr>
+
+            <tr *ngFor="let item of list; index as index" class="mb-sm-10">
+              <td (click)="editDisplay(index)">
+                <span *ngIf="!item.edit">{{ item.id }}</span>
+                <input
+                  type="text"
+                  *ngIf="item.edit"
+                  name="name"
+                  class="form-control"
+                  [(ngModel)]="item.user.firstName"
+                  [value]="item.user.firstName"
+                  placeholder="Name"
+                  required=""
+                />
+              </td>
+
+              <td (click)="editDisplay(index)">
+                <span *ngIf="!item.edit">{{ item.name }}</span>
+                <input
+                  type="text"
+                  *ngIf="item.edit"
+                  name="name"
+                  class="form-control"
+                  [(ngModel)]="item.user.lastName"
+                  [value]="item.user.lastName"
+                  placeholder="Name"
+                  required=""
+                />
+              </td>
+
+              <td (click)="editDisplay(index)">
+                <span *ngIf="!item.edit">{{ item.teacherId }}</span>
+                <input
+                  type="text"
+                  *ngIf="item.edit"
+                  name="name"
+                  class="form-control"
+                  [(ngModel)]="item.user.teacherId"
+                  [value]="item.user.teacherId"
+                  placeholder="Teacher ID"
+                  required=""
+                />
+              </td>
+
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-primary p-0"
+                  *ngIf="!item.edit"
+                  (click)="editUser(index)"
+                >
+                  Edit
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-danger p-0"
+                  *ngIf="!item.edit"
+                  (click)="deleteSubject(item.id, index)"
+                >
+                  Delete
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-success p-0"
+                  *ngIf="item.edit"
+                  (click)="updateUser(item.user.id, index)"
+                >
+                  Update
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-warning p-0"
+                  *ngIf="item.edit"
+                  (click)="cancelUser(index)"
+                >
+                  Cancel
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <table
-        class="table table-striped table-bordered"
-        *ngIf="list.length != 0"
-      >
-        <thead>
-          <tr>
-            <th class="col-1">
-              ID<span class="pull-right arrow-up"></span>
-              <span class="pull-right arrow-down"></span>
-            </th>
-            <th class="col-1 w-0">
-              Name<span class="pull-right arrow-up"></span>
-              <span class="pull-right arrow-down"></span>
-          
-
-            <th class="col-2.5">Action</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr [formGroup]="form">
-            <td class="h-100"></td>
-           
-            <td>
-              <input
-                class="col-2 w-100 form-control"
-                formControlName="name"
-                type="text"
-              />
-            </td>
-
-          
-            <td>
-              <button
-                type="button"
-                class="btn btn-success p-0"
-                (click)="createSubject()"
-              >
-                Add
-              </button>
-              <button
-                type="button"
-                class="btn btn-warning p-0"
-                (click)="clear()"
-              >
-                Clear
-              </button>
-            </td>
-          </tr>
-
-          <tr *ngFor="let item of list; index as index" class="mb-sm-10">
-          
-            <td (click)="editDisplay(index)">
-              <span *ngIf="!item.edit">{{ item.id }}</span>
-              <input
-                type="text"
-                *ngIf="item.edit"
-                name="name"
-                class="form-control"
-                [(ngModel)]="item.user.firstName"
-                [value]="item.user.firstName"
-                placeholder="Name"
-                required=""
-              />
-            </td>
-
-            <td (click)="editDisplay(index)">
-              <span *ngIf="!item.edit">{{ item.name }}</span>
-              <input
-                type="text"
-                *ngIf="item.edit"
-                name="name"
-                class="form-control"
-                [(ngModel)]="item.user.lastName"
-                [value]="item.user.lastName"
-                placeholder="Name"
-                required=""
-              />
-            </td>
-           
-            <td>
-              <button
-                type="button"
-                class="btn btn-primary p-0"
-                *ngIf="!item.edit"
-                (click)="editUser(index)"
-              >
-                Edit
-              </button>
-              <button
-                type="button"
-                class="btn btn-danger p-0"
-                *ngIf="!item.edit"
-                (click)="deleteSubject(item.id, index)"
-              >
-                Delete
-              </button>
-              <button
-                type="button"
-                class="btn btn-success p-0"
-                *ngIf="item.edit"
-                (click)="updateUser(item.user.id, index)"
-              >
-                Update
-              </button>
-              <button
-                type="button"
-                class="btn btn-warning p-0"
-                *ngIf="item.edit"
-                (click)="cancelUser(index)"
-              >
-                Cancel
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
 </div>
