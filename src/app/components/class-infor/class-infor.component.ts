@@ -25,7 +25,7 @@ export class ClassInforComponent implements OnInit {
 
   ngOnInit(): void {
     this.classId = this.activateRoute.snapshot.params['id'];
-    this.studentService.getAllStudents(this.classId).subscribe((data) => {
+    this.studentService.getAllStudentsByClassId(this.classId).subscribe((data) => {
       this.list = data;
 
     });

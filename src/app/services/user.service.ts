@@ -27,7 +27,7 @@ export class UserService {
     return this.http.post<any>('http://localhost:8080/api/register', data);
   }
 
-  updateUser(data: any, id:number) {
+  updateUser(data: any, id: number) {
     return this.http.put<any>(`http://localhost:8080/users/${id}`, data);
   }
 }

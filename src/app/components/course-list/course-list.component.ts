@@ -50,8 +50,12 @@ export class CourseListComponent implements OnInit {
     this.editDisplay(index);
   }
 
-  deleteUser(id: string, index: number) {
-    console.log(id);
+  deleteSubject(id: number, index: number) {
+    this.courseService
+      .deleteSubjectByClassId(this.classId, id)
+      .subscribe((data) => {
+        location.reload();
+      });
   }
 
   updateUser(id: string, index: number) {

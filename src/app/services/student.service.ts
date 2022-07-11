@@ -12,7 +12,13 @@ export class StudentService {
 
   constructor(private http: HttpClient) {}
 
-  getAllStudents(classId: number) {
+  getAllStudents() {
+    return this.http.get<any>(
+      `http://localhost:8080/users/students`
+    );
+  }
+
+  getAllStudentsByClassId(classId: number) {
     return this.http.get<any>(
       `http://localhost:8080/classes/${classId}/students`
     );

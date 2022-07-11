@@ -1,20 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Teacher } from '../models/teacher.model';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TeacherService {
+  constructor(private http: HttpClient) {}
 
-  teacher1 : Teacher = new Teacher('id1', 'teacher');
-  teacher2 : Teacher = new Teacher('id2', 'teacher');
-
-  teacherList: Array<Teacher> = [this.teacher1, this.teacher2]
-
-  constructor() { }
-
-  getAllTeacherS()
-  {
-    return this.teacherList;
+  getAllTeachers() {
+    return this.http.get<Array<any>>('http://localhost:8080/users/teachers');
   }
 }

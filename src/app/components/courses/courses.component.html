@@ -40,7 +40,7 @@
 
           <tbody>
             <tr [formGroup]="form">
-          <td class="h-100"></td>
+              <td class="h-100"></td>
 
               <td>
                 <input
@@ -49,7 +49,7 @@
                   type="text"
                 />
               </td>
-                  
+
               <td>
                 <input
                   class="col-2 w-100 form-control"
@@ -77,18 +77,8 @@
             </tr>
 
             <tr *ngFor="let item of list; index as index" class="mb-sm-10">
-              <td (click)="editDisplay(index)">
-                <span *ngIf="!item.edit">{{ item.id }}</span>
-                <input
-                  type="text"
-                  *ngIf="item.edit"
-                  name="name"
-                  class="form-control"
-                  [(ngModel)]="item.user.firstName"
-                  [value]="item.user.firstName"
-                  placeholder="Name"
-                  required=""
-                />
+              <td>
+                <span>{{ item.id }}</span>
               </td>
 
               <td (click)="editDisplay(index)">
@@ -98,8 +88,8 @@
                   *ngIf="item.edit"
                   name="name"
                   class="form-control"
-                  [(ngModel)]="item.user.lastName"
-                  [value]="item.user.lastName"
+                  [(ngModel)]="item.name"
+                  [value]="item.name"
                   placeholder="Name"
                   required=""
                 />
@@ -112,8 +102,8 @@
                   *ngIf="item.edit"
                   name="name"
                   class="form-control"
-                  [(ngModel)]="item.user.teacherId"
-                  [value]="item.user.teacherId"
+                  [(ngModel)]="item.teacherId"
+                  [value]="item.teacherId"
                   placeholder="Teacher ID"
                   required=""
                 />

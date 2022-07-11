@@ -14,7 +14,7 @@ export class CoursesService {
   }
 
   getAllCoursesByClassId(classId: number) {
-    console.log("classId" + classId)
+    console.log('classId' + classId);
     return this.http.get<any>(
       `http://localhost:8080/classes/${classId}/subjects`
     );
@@ -30,8 +30,11 @@ export class CoursesService {
   }
 
   deleteSubject(id: number) {
-     return this.http.delete<any>(
-       `http://localhost:8080/subjects/${id}`
-     );
+    return this.http.delete<any>(`http://localhost:8080/subjects/${id}`);
+  }
+  deleteSubjectByClassId(classId: number, id: number) {
+    return this.http.delete<any>(
+      `http://localhost:8080/classes/${classId}/subjects/${id}`
+    );
   }
 }

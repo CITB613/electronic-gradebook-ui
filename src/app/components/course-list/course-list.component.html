@@ -15,7 +15,6 @@
       >
         <thead>
           <tr>
-            <!-- ng-show="sort==='email' && reverse" -->
             <th class="col-2">
               ID<span class="pull-right arrow-up"></span>
               <span class="pull-right arrow-down"></span>
@@ -76,7 +75,9 @@
               <span>{{ item.name }}</span>
             </td>
             <td>
-              <span>{{ item.teacher.firstName }} {{ item.teacher.lastName }}</span>
+              <span
+                >{{ item.teacher.firstName }} {{ item.teacher.lastName }}</span
+              >
 
               <select
                 class="form-control p-0"
@@ -91,12 +92,11 @@
               </select>
             </td>
             <td></td>
-
             <td>
               <button
                 type="button"
                 class="btn btn-danger p-0"
-                (click)="deleteUser(item.item.id, index)"
+                (click)="deleteSubject(item.id, index)"
               >
                 Delete
               </button>
